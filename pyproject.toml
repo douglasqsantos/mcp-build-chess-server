@@ -1,10 +1,30 @@
 [project]
 name = "mcp-build-chess-server"
 version = "0.1.0"
-description = "Add your description here"
+description = "MCP server exposing Chess.com player profile and stats via stdio"
 readme = "README.md"
-requires-python = ">=3.12"
-dependencies = [
-    "mcp[cli]>=1.26.0",
-    "requests>=2.32.5",
+authors = [
+    { name = "Douglas Quintiliano dos Santos", email = "douglas.q.santos@gmail.com" },
 ]
+license = { file = "LICENSE" }
+keywords = ["mcp", "server", "chess", "chess.com"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.12"
+dependencies = ["mcp[cli]>=1.26.0", "requests>=2.32.5"]
+
+[project.scripts]
+chess-server = "chess.__main__:main"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.setuptools.packages.find]
+where = ["src"]
